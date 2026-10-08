@@ -67,12 +67,9 @@ the domain's DNS at GitHub Pages (four `A` records for the apex, or a `CNAME` fo
 set the custom domain in Settings → Pages. Don't add the `CNAME` file before the DNS is
 pointed — Pages will fail its check and the site goes down until you remove it.
 
-## Before it goes live: legal disclosures
+## Legal disclosures
 
 UK companies must show, on their website, the registered company name, the company
 registration number, the place of registration (England and Wales) and the registered
-office address. The footers in `index.html` and `contact/index.html` currently carry only
-the name and place of registration — add the company number and the registered office
-address to both before pointing a public domain at this.
-
-There's an HTML comment at each footer marking the spot.
+office address. Both `index.html` and `contact/index.html` currently include these
+details in their footers.
