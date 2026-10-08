@@ -20,17 +20,17 @@ The app icons came straight from the repos, resized to 256px:
 
 ## The logo
 
-The site currently ships a placeholder mark — a ring with a single tick, drawn inline as SVG
-in both HTML files and again in `favicon.svg`.
+`assets/omeoray-mark.png` is the circular monogram, cropped out of the full Omeoray Ltd
+lockup, squared with 6% padding and recoloured to pure black on transparent. Pure black is
+deliberate: dark mode is then a single exact `filter: invert(1)` in `styles.css` rather than
+a second export to keep in sync. `favicon.svg` embeds a 128px copy and inverts it the same
+way under a dark browser UI; `assets/apple-touch-icon.png` is the opaque version Apple wants.
 
-**This should be replaced with the real Omeoray Ltd logo.** Drop two files into `assets/`:
+The wordmark beside the mark is set in type, not an image, so it stays crisp and selectable.
 
-- `assets/omeoray-mark.png` — the circular monogram only, square, transparent background,
-  512×512, black artwork
-- `assets/omeoray-mark.svg` — same thing as vector, if you have it (preferred for the favicon)
-
-Black-on-transparent is deliberate: the stylesheet can flip it to white for dark mode with a
-single `filter: invert(1)` rather than needing two exports.
+**If you ever have the mark as vector**, replacing the PNG with an SVG is worth doing — the
+mark is dense at favicon size and vector would sharpen it. The swap is `src="…"` in two HTML
+files plus `favicon.svg`.
 
 Open `index.html` in a browser to see it. That's the whole workflow.
 

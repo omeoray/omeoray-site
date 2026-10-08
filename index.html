@@ -6,6 +6,7 @@
 <title>Omeoray</title>
 <meta name="description" content="Omeoray is a software company in London. We build and run a small portfolio of our own apps.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:title" content="Omeoray">
 <meta property="og:description" content="A software company in London. We build and run a small portfolio of our own apps.">
 <meta property="og:type" content="website">
@@ -37,13 +38,7 @@
 
   <header class="top">
     <a class="brand" href="./" aria-label="Omeoray — home">
-      <!-- the bearing mark: one ring, one tick. --bearing sets its heading. -->
-      <svg class="mark" viewBox="0 0 100 100" style="--bearing:0deg" aria-hidden="true">
-        <g class="dial">
-          <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
-          <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
-        </g>
-      </svg>
+      <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
       <span>omeoray</span>
     </a>
     <nav><a href="contact/">Contact</a></nav>
@@ -52,12 +47,7 @@
   <main>
 
     <section class="hero">
-      <svg class="mark" id="heroMark" viewBox="0 0 100 100" style="--bearing:0deg" aria-hidden="true">
-        <g class="dial">
-          <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
-          <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
-        </g>
-      </svg>
+      <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
       <h1>We build our own&nbsp;things.</h1>
       <p>Omeoray is a software company in London. Everything below was designed, built and shipped in&nbsp;house.</p>
     </section>
@@ -68,16 +58,11 @@
       <ul class="projects">
 
         <!-- ───────── B33n ───────── -->
-        <li class="project reveal" style="--bearing:45deg">
+        <li class="project reveal">
           <div class="project-top">
             <span class="app-icon"><img src="assets/b33n.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
             <h3>B33n</h3>
-            <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
-              <g class="dial">
-                <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
-                <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
-              </g>
-            </svg>
+            <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
           </div>
           <p>Places your friends have actually been. Keep a list of where you've been and where you want to go, then ask friends for recommendations when you land somewhere new.</p>
           <p class="actions">
@@ -93,16 +78,11 @@
         </li>
 
         <!-- ───────── Plug.fm ───────── -->
-        <li class="project reveal" style="--bearing:120deg">
+        <li class="project reveal">
           <div class="project-top">
             <span class="app-icon"><img src="assets/plug.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
             <h3>Plug.fm</h3>
-            <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
-              <g class="dial">
-                <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
-                <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
-              </g>
-            </svg>
+            <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
           </div>
           <p>Call an artist early and get the credit when they climb. Your score follows how far they travel from the day you called it.</p>
           <p class="actions">
@@ -114,16 +94,11 @@
         </li>
 
         <!-- ───────── Aunty Run ───────── -->
-        <li class="project reveal" style="--bearing:200deg">
+        <li class="project reveal">
           <div class="project-top">
             <span class="app-icon"><img src="assets/auntyrun.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
             <h3>Aunty Run</h3>
-            <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
-              <g class="dial">
-                <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
-                <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
-              </g>
-            </svg>
+            <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
           </div>
           <p>Mansion of Deliverance. Aunty Ngozi sprints through a haunted mansion in full kente and gele, rebuking ghosts with holy water and a few choice words. Plays in a browser, no install.</p>
           <p class="actions">
@@ -183,17 +158,6 @@
     }
     requestAnimationFrame(frame);
   })();
-
-  // Settle the hero mark onto its bearing once, on arrival.
-  var hero = document.getElementById('heroMark');
-  if (hero && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    hero.style.setProperty('--bearing', '-42deg');
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        hero.style.setProperty('--bearing', '0deg');
-      });
-    });
-  }
 
   // Reveal each card as it arrives. With no JS the cards are simply visible.
   var cards = document.querySelectorAll('.reveal');
