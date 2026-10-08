@@ -12,6 +12,9 @@
   --shadow: 0 1px 2px rgba(18, 18, 20, 0.04), 0 8px 24px rgba(18, 18, 20, 0.05);
   --shadow-lift: 0 2px 4px rgba(18, 18, 20, 0.05), 0 14px 36px rgba(18, 18, 20, 0.09);
   --radius: 14px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, "Cascadia Mono", "Liberation Mono",
+    Consolas, monospace;
+  --sheen: rgba(255, 255, 255, 0.55);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +28,7 @@
     --accent: #ff7a33;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.26);
     --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.34), 0 14px 36px rgba(0, 0, 0, 0.4);
+    --sheen: rgba(255, 255, 255, 0.16);
   }
 }
 
@@ -38,6 +42,7 @@
   --accent: #ff7a33;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.26);
   --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.34), 0 14px 36px rgba(0, 0, 0, 0.4);
+  --sheen: rgba(255, 255, 255, 0.16);
 }
 
 *,
@@ -163,9 +168,10 @@ body {
 
 .section-label {
   margin: 0 0 20px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -179,6 +185,8 @@ body {
 }
 
 .project {
+  position: relative;
+  overflow: hidden;
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -203,20 +211,143 @@ body {
 .project-top {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
+/* The maker's mark sits in the corner of each product, like a hallmark. */
 .project-top .mark {
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.45;
 }
 
 .project h3 {
+  flex: 1;
   margin: 0;
   font-size: 1.22rem;
   letter-spacing: -0.02em;
   font-weight: 600;
+}
+
+/* ---------- app icons, with the 2003 glass shine ---------- */
+
+.app-icon {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 13px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 6px 14px rgba(0, 0, 0, 0.14);
+}
+
+.app-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* highlight across the top half, cut off hard — the old gel-button trick */
+.app-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(255, 255, 255, 0) 46%
+  );
+}
+
+.app-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14);
+}
+
+/* ---------- the sheen sweep ---------- */
+
+.project::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 38%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transform: skewX(-18deg);
+  background: linear-gradient(100deg, transparent, var(--sheen), transparent);
+}
+
+.project:hover::after,
+.project:focus-within::after {
+  animation: sweep 900ms ease-out;
+}
+
+@keyframes sweep {
+  0% { left: -60%; opacity: 0; }
+  12% { opacity: 1; }
+  100% { left: 125%; opacity: 0; }
+}
+
+/* ---------- the loader ---------- */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: var(--bg);
+}
+
+.preloading .preloader {
+  display: flex;
+}
+
+.preloading body {
+  overflow: hidden;
+}
+
+.preloader.is-done {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms ease;
+}
+
+.pl-bar {
+  width: min(240px, 58vw);
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.pl-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.pl-count {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 .project p {

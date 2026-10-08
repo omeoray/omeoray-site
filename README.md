@@ -6,8 +6,31 @@ The Omeoray Ltd company site. Three static files, no build step, no dependencies
 index.html        the home page — hero + the three project cards
 contact/          the contact page (served at /contact/)
 styles.css        all styling, light + dark
-favicon.svg       the bearing mark
+favicon.svg       the bearing mark (placeholder — see "The logo" below)
+assets/           app icons, pulled from each product's own repo
 ```
+
+The app icons came straight from the repos, resized to 256px:
+
+| File | Source |
+| --- | --- |
+| `assets/b33n.png` | `Been` → `ios/Been/Images.xcassets/AppIcon.appiconset/App-Icon-1024x1024@1x.png` |
+| `assets/plug.png` | `Plug` → `artifacts/plug-fm-ios/assets/images/icon.png` |
+| `assets/auntyrun.png` | `Aunty_Run` → `aunty-ghost-mansion/icon-512.png` |
+
+## The logo
+
+The site currently ships a placeholder mark — a ring with a single tick, drawn inline as SVG
+in both HTML files and again in `favicon.svg`.
+
+**This should be replaced with the real Omeoray Ltd logo.** Drop two files into `assets/`:
+
+- `assets/omeoray-mark.png` — the circular monogram only, square, transparent background,
+  512×512, black artwork
+- `assets/omeoray-mark.svg` — same thing as vector, if you have it (preferred for the favicon)
+
+Black-on-transparent is deliberate: the stylesheet can flip it to white for dark mode with a
+single `filter: invert(1)` rather than needing two exports.
 
 Open `index.html` in a browser to see it. That's the whole workflow.
 

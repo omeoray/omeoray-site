@@ -13,8 +13,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>
+  // Decide before first paint, so the loader never flashes in after the page.
+  // Once per session only, and never when the viewer asks for less motion.
+  (function () {
+    try {
+      if (!sessionStorage.getItem('omeoray-loaded') &&
+          !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('preloading');
+      }
+    } catch (e) { /* private mode: just skip it */ }
+  })();
+</script>
 </head>
 <body>
+
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="pl-bar"><div class="pl-fill" id="plFill"></div></div>
+  <div class="pl-count" id="plCount">Loading 0%</div>
+</div>
 
 <div class="shell">
 
@@ -53,15 +70,16 @@
         <!-- ───────── B33n ───────── -->
         <li class="project reveal" style="--bearing:45deg">
           <div class="project-top">
+            <span class="app-icon"><img src="assets/b33n.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
+            <h3>B33n</h3>
             <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
               <g class="dial">
                 <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
                 <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
               </g>
             </svg>
-            <h3>B33n</h3>
           </div>
-          <p>Places your friends have actually been. Keep a list of where you've been and where you want to go, then ask the people you trust when you land somewhere new.</p>
+          <p>Places your friends have actually been. Keep a list of where you've been and where you want to go, then ask friends for recommendations when you land somewhere new.</p>
           <p class="actions">
             <a class="btn" href="https://b33n.link">
               b33n.link
@@ -77,15 +95,16 @@
         <!-- ───────── Plug.fm ───────── -->
         <li class="project reveal" style="--bearing:120deg">
           <div class="project-top">
+            <span class="app-icon"><img src="assets/plug.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
+            <h3>Plug.fm</h3>
             <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
               <g class="dial">
                 <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
                 <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
               </g>
             </svg>
-            <h3>Plug.fm</h3>
           </div>
-          <p>Call an artist early and get the credit when they climb. Make a public, dated call, and your score follows how far they travelled from the day you called it.</p>
+          <p>Call an artist early and get the credit when they climb. Your score follows how far they travel from the day you called it.</p>
           <p class="actions">
             <a class="btn" href="https://plug.fm">
               plug.fm
@@ -97,13 +116,14 @@
         <!-- ───────── Aunty Run ───────── -->
         <li class="project reveal" style="--bearing:200deg">
           <div class="project-top">
+            <span class="app-icon"><img src="assets/auntyrun.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
+            <h3>Aunty Run</h3>
             <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
               <g class="dial">
                 <circle class="ring" cx="50" cy="50" r="34" stroke-dasharray="199.6 14" transform="rotate(-90 50 50)"></circle>
                 <line class="tick" x1="50" y1="10.5" x2="50" y2="3.5"></line>
               </g>
             </svg>
-            <h3>Aunty Run</h3>
           </div>
           <p>Mansion of Deliverance. Aunty Ngozi sprints through a haunted mansion in full kente and gele, rebuking ghosts with holy water and a few choice words. Plays in a browser, no install.</p>
           <p class="actions">
@@ -125,15 +145,44 @@
 
   <footer>
     <p><a href="contact/">romeo@omeoray.com</a></p>
-    <!-- Required by law before this goes live on a public domain: company number,
-         place of registration and registered office address. See README. -->
-    <p>Omeoray Ltd · Registered in England and Wales</p>
+    <p>Omeoray Ltd · Registered in England and Wales, company no. 17489103</p>
+    <p>Registered office: 66 Paul Street, London EC2A 4NA</p>
   </footer>
 
 </div>
 
 <script>
   document.documentElement.classList.add('js');
+
+  // The loader. Counts up, fills the bar, gets out of the way.
+  (function () {
+    var root = document.documentElement;
+    if (!root.classList.contains('preloading')) return;
+
+    var el = document.getElementById('preloader');
+    var fill = document.getElementById('plFill');
+    var count = document.getElementById('plCount');
+    var start = null;
+    var RUN = 850;
+
+    function frame(now) {
+      if (start === null) start = now;
+      var t = Math.min((now - start) / RUN, 1);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var pct = Math.round(eased * 100);
+      fill.style.width = pct + '%';
+      count.textContent = 'Loading ' + pct + '%';
+      if (t < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        try { sessionStorage.setItem('omeoray-loaded', '1'); } catch (e) {}
+        el.classList.add('is-done');
+        root.classList.remove('preloading');
+        setTimeout(function () { el.remove(); }, 450);
+      }
+    }
+    requestAnimationFrame(frame);
+  })();
 
   // Settle the hero mark onto its bearing once, on arrival.
   var hero = document.getElementById('heroMark');
