@@ -1,48 +1,46 @@
 /* Omeoray Ltd — company site
-   One stylesheet. Light by default, dark when the viewer's system asks for it. */
+   One stylesheet. Warm off-white, near-black, one electric blue.
+   Light by default, dark when the viewer's system asks for it. */
 
 :root {
-  --bg: #fbfaf8;
-  --bg-raised: #ffffff;
-  --ink: #121214;
-  --ink-soft: #52525b;
-  --ink-faint: #8a8a93;
-  --line: #e6e3dd;
-  --accent: #e9540d;
-  --shadow: 0 1px 2px rgba(18, 18, 20, 0.04), 0 8px 24px rgba(18, 18, 20, 0.05);
-  --shadow-lift: 0 2px 4px rgba(18, 18, 20, 0.05), 0 14px 36px rgba(18, 18, 20, 0.09);
-  --radius: 14px;
+  --bg: #faf8f4;
+  --panel: #fffefb;
+  --ink: #121110;
+  --ink-soft: #55524c;
+  --ink-faint: #736f67;
+  --line: #e4ded3;
+  --line-strong: #d2cabb;
+  --accent: #1b3cff;
+  --accent-wash: rgba(27, 60, 255, 0.05);
+  --radius: 10px;
   --mono: ui-monospace, SFMono-Regular, Menlo, "Cascadia Mono", "Liberation Mono",
     Consolas, monospace;
-  --sheen: rgba(255, 255, 255, 0.55);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0e0e10;
-    --bg-raised: #17171a;
-    --ink: #f4f3f1;
-    --ink-soft: #a9a9b2;
-    --ink-faint: #74747c;
-    --line: #27272b;
-    --accent: #ff7a33;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.26);
-    --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.34), 0 14px 36px rgba(0, 0, 0, 0.4);
-    --sheen: rgba(255, 255, 255, 0.16);
+    --bg: #0d0d0c;
+    --panel: #151513;
+    --ink: #f5f2ec;
+    --ink-soft: #a8a49c;
+    --ink-faint: #8a857b;
+    --line: #272521;
+    --line-strong: #3a3732;
+    --accent: #6b89ff;
+    --accent-wash: rgba(107, 137, 255, 0.07);
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #0e0e10;
-  --bg-raised: #17171a;
-  --ink: #f4f3f1;
-  --ink-soft: #a9a9b2;
-  --ink-faint: #74747c;
-  --line: #27272b;
-  --accent: #ff7a33;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.26);
-  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.34), 0 14px 36px rgba(0, 0, 0, 0.4);
-  --sheen: rgba(255, 255, 255, 0.16);
+  --bg: #0d0d0c;
+  --panel: #151513;
+  --ink: #f5f2ec;
+  --ink-soft: #a8a49c;
+  --ink-faint: #8a857b;
+  --line: #272521;
+  --line-strong: #3a3732;
+  --accent: #6b89ff;
+  --accent-wash: rgba(107, 137, 255, 0.07);
 }
 
 *,
@@ -69,9 +67,20 @@ body {
 
 .shell {
   width: 100%;
-  max-width: 41rem;
+  max-width: 50rem;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 24px;
+}
+
+/* ---------- small interface type ---------- */
+
+.meta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 /* ---------- the Omeoray mark ---------- */
@@ -83,7 +92,6 @@ body {
   flex: none;
   width: 22px;
   height: 22px;
-  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -103,7 +111,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 28px 0 0;
+  padding: 26px 0 0;
 }
 
 .brand {
@@ -116,63 +124,79 @@ body {
   letter-spacing: -0.02em;
 }
 
-.brand .mark {
-  width: 22px;
-  height: 22px;
-}
-
 .top nav a {
   color: var(--ink-soft);
   text-decoration: none;
   font-size: 0.95rem;
+  transition: color 140ms ease;
 }
 
 .top nav a:hover,
 .top nav a:focus-visible {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 /* ---------- hero ---------- */
 
 .hero {
-  padding: 88px 0 72px;
+  padding: 92px 0 0;
+}
+
+/* a thin framing bar, the way a portfolio index labels its own page */
+.hero-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
 }
 
 .hero .mark {
-  width: 62px;
-  height: 62px;
-  margin-bottom: 30px;
-  animation: spin-in 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes spin-in {
-  from { transform: rotate(-150deg) scale(0.86); opacity: 0; }
-  to { transform: none; opacity: 1; }
+  width: 58px;
+  height: 58px;
+  margin: 42px 0 28px;
 }
 
 .hero h1 {
-  margin: 0 0 14px;
-  font-size: clamp(2.1rem, 8vw, 3rem);
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  margin: 0 0 20px;
+  font-size: clamp(2.4rem, 8.5vw, 3.9rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
   font-weight: 600;
+  max-width: 14ch;
 }
 
 .hero p {
   margin: 0;
-  max-width: 30rem;
+  max-width: 34rem;
   color: var(--ink-soft);
-  font-size: 1.1rem;
+  font-size: 1.12rem;
 }
 
-/* ---------- projects ---------- */
+/* ---------- work ---------- */
 
-.section-label {
-  margin: 0 0 20px;
+.work {
+  padding: 88px 0 0;
+}
+
+.work-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 2px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.work-head h2 {
+  margin: 0;
+  font: inherit;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -181,179 +205,142 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: 16px;
 }
 
-.project {
+.panel {
   position: relative;
-  overflow: hidden;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow);
-  transition: box-shadow 260ms ease, transform 260ms ease, border-color 260ms ease;
+  padding: 30px 24px 30px 20px;
+  border-bottom: 1px solid var(--line);
+  transition: background-color 180ms ease;
 }
 
-.project:hover,
-.project:focus-within {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lift);
-  border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
+/* the closing rule belongs to the footer, not the last panel */
+.panel:last-child {
+  border-bottom: 0;
 }
 
-/* One satisfying revolution when you reach for it. */
-.project:hover .mark,
-.project:focus-within .mark {
-  transform: rotate(360deg);
+/* the left rule is the activation cue — drawn, not laid out, so nothing shifts */
+.panel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform 180ms ease;
 }
 
-.project-top {
+.panel:hover,
+.panel:focus-within {
+  background: var(--accent-wash);
+}
+
+.panel:hover::before,
+.panel:focus-within::before {
+  transform: scaleY(1);
+}
+
+.panel-head {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 14px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
-/* The maker's mark sits in the corner of each product, like a hallmark. */
-.project-top .mark {
-  width: 20px;
-  height: 20px;
-  opacity: 0.45;
+.panel-index {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  transition: color 180ms ease;
 }
 
-.project h3 {
-  flex: 1;
-  margin: 0;
-  font-size: 1.22rem;
-  letter-spacing: -0.02em;
-  font-weight: 600;
+.panel:hover .panel-index,
+.panel:focus-within .panel-index {
+  color: var(--accent);
 }
 
-/* ---------- app icons, with the 2003 glass shine ---------- */
+.panel-platform {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
 
-.app-icon {
-  position: relative;
-  width: 56px;
-  height: 56px;
+.panel-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.panel-art {
+  width: 72px;
+  height: 72px;
   flex: none;
-  border-radius: 13px;
+  position: relative;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 6px 14px rgba(0, 0, 0, 0.14);
 }
 
-.app-icon img {
+.panel-art img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* highlight across the top half, cut off hard — the old gel-button trick */
-.app-icon::after {
+.panel-art::after {
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.12) 45%,
-    rgba(255, 255, 255, 0) 46%
-  );
-}
-
-.app-icon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
   border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
 }
 
-/* ---------- the sheen sweep ---------- */
-
-.project::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -60%;
-  width: 38%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0;
-  transform: skewX(-18deg);
-  background: linear-gradient(100deg, transparent, var(--sheen), transparent);
+.panel-text {
+  min-width: 0;
 }
 
-.project:hover::after,
-.project:focus-within::after {
-  animation: sweep 900ms ease-out;
-}
-
-@keyframes sweep {
-  0% { left: -60%; opacity: 0; }
-  12% { opacity: 1; }
-  100% { left: 125%; opacity: 0; }
-}
-
-/* ---------- the loader ---------- */
-
-.preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  background: var(--bg);
-}
-
-.preloading .preloader {
+.panel-title {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  letter-spacing: -0.022em;
+  font-weight: 600;
 }
 
-.preloading body {
-  overflow: hidden;
-}
-
-.preloader.is-done {
+/* the arrow is the reveal: it slides in, it does not fade in from nowhere */
+.panel-arrow {
+  color: var(--accent);
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 420ms ease;
+  transform: translateX(-6px);
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.pl-bar {
-  width: min(240px, 58vw);
-  height: 3px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: var(--line);
+.panel-arrow svg {
+  display: block;
+  width: 15px;
+  height: 15px;
 }
 
-.pl-fill {
-  width: 0;
-  height: 100%;
-  border-radius: 999px;
-  background: var(--accent);
+.panel:hover .panel-arrow,
+.panel:focus-within .panel-arrow {
+  opacity: 1;
+  transform: none;
 }
 
-.pl-count {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.project p {
+.panel-text p {
   margin: 0 0 18px;
   color: var(--ink-soft);
+  max-width: 38rem;
 }
 
 .actions {
@@ -367,15 +354,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 8px 14px;
-  border: 1px solid var(--line);
+  padding: 7px 13px;
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: var(--bg);
+  background: var(--panel);
   color: var(--ink);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
-  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+  transition: border-color 140ms ease, color 140ms ease;
 }
 
 .btn:hover,
@@ -385,70 +372,69 @@ body {
 }
 
 .btn svg {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   flex: none;
 }
 
 /* ---------- contact ---------- */
 
 .contact {
-  padding: 88px 0 0;
+  padding: 92px 0 0;
 }
 
 .contact h1 {
-  margin: 0 0 14px;
-  font-size: clamp(2rem, 7vw, 2.6rem);
-  letter-spacing: -0.035em;
-  line-height: 1.1;
+  margin: 34px 0 18px;
+  font-size: clamp(2.2rem, 7.5vw, 3.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.04;
   font-weight: 600;
 }
 
 .contact > p {
-  margin: 0 0 32px;
-  max-width: 30rem;
+  margin: 0 0 36px;
+  max-width: 32rem;
   color: var(--ink-soft);
-  font-size: 1.1rem;
+  font-size: 1.12rem;
 }
 
 .mailto {
   display: inline-block;
-  font-size: clamp(1.15rem, 5vw, 1.6rem);
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--ink);
   text-decoration: none;
-  border-bottom: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
-  padding-bottom: 2px;
-  transition: color 160ms ease, border-color 160ms ease;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 3px;
+  transition: color 140ms ease;
   overflow-wrap: anywhere;
 }
 
 .mailto:hover,
 .mailto:focus-visible {
   color: var(--accent);
-  border-color: var(--accent);
 }
 
 .copy-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 20px;
   min-height: 34px;
 }
 
 .copy {
   appearance: none;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   cursor: pointer;
   padding: 7px 13px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: var(--bg-raised);
+  background: var(--panel);
   color: var(--ink-soft);
-  transition: border-color 160ms ease, color 160ms ease;
+  transition: border-color 140ms ease, color 140ms ease;
 }
 
 .copy:hover,
@@ -458,10 +444,13 @@ body {
 }
 
 .copy-note {
-  font-size: 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--accent);
   opacity: 0;
-  transition: opacity 200ms ease;
+  transition: opacity 160ms ease;
 }
 
 .copy-note.is-shown {
@@ -471,20 +460,21 @@ body {
 /* ---------- footer ---------- */
 
 footer {
-  margin-top: 96px;
-  padding: 28px 0 44px;
-  border-top: 1px solid var(--line);
+  margin-top: 92px;
+  padding: 26px 0 48px;
+  border-top: 1px solid var(--line-strong);
   color: var(--ink-faint);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
 }
 
 footer p {
-  margin: 0 0 6px;
+  margin: 0 0 5px;
 }
 
 footer a {
   color: var(--ink-soft);
   text-decoration: none;
+  transition: color 140ms ease;
 }
 
 footer a:hover,
@@ -496,8 +486,8 @@ footer a:focus-visible {
 
 .js .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 620ms ease, transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(8px);
+  transition: opacity 420ms ease, transform 420ms ease;
 }
 
 .js .reveal.is-in {
@@ -508,7 +498,37 @@ footer a:focus-visible {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 3px;
+}
+
+/* ---------- narrow ---------- */
+
+@media (max-width: 34rem) {
+  .shell {
+    padding: 0 16px;
+  }
+
+  .panel {
+    padding: 26px 0 26px 16px;
+  }
+
+  .panel-body {
+    gap: 16px;
+  }
+
+  .panel-art {
+    width: 56px;
+    height: 56px;
+    border-radius: 13px;
+  }
+
+  .hero {
+    padding-top: 64px;
+  }
+
+  .hero .mark {
+    margin: 34px 0 24px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -523,5 +543,9 @@ footer a:focus-visible {
   .js .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .panel::before {
+    transition: none;
   }
 }

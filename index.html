@@ -4,35 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Omeoray</title>
-<meta name="description" content="Omeoray is a software company in London. We build and run a small portfolio of our own apps.">
+<meta name="description" content="Independent software from London. We make apps and games around music, places and play.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:title" content="Omeoray">
-<meta property="og:description" content="A software company in London. We build and run a small portfolio of our own apps.">
+<meta property="og:description" content="Independent software from London. We make apps and games around music, places and play.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script>
-  // Decide before first paint, so the loader never flashes in after the page.
-  // Once per session only, and never when the viewer asks for less motion.
-  (function () {
-    try {
-      if (!sessionStorage.getItem('omeoray-loaded') &&
-          !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.documentElement.classList.add('preloading');
-      }
-    } catch (e) { /* private mode: just skip it */ }
-  })();
-</script>
 </head>
 <body>
-
-<div class="preloader" id="preloader" aria-hidden="true">
-  <div class="pl-bar"><div class="pl-fill" id="plFill"></div></div>
-  <div class="pl-count" id="plCount">Loading 0%</div>
-</div>
 
 <div class="shell">
 
@@ -47,70 +30,107 @@
   <main>
 
     <section class="hero">
+      <div class="hero-bar">
+        <span class="meta">Independent software</span>
+        <span class="meta">London</span>
+      </div>
       <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
       <h1>We build our own&nbsp;things.</h1>
-      <p>Omeoray is a software company in London. Everything below was designed, built and shipped in&nbsp;house.</p>
+      <p>Independent software from London. We make apps and games around music, places and&nbsp;play.</p>
     </section>
 
-    <section aria-labelledby="work">
-      <h2 class="section-label" id="work">Work</h2>
+    <section class="work" aria-labelledby="work-heading">
+      <div class="work-head">
+        <h2 id="work-heading">Products</h2>
+        <span class="meta">Three</span>
+      </div>
 
       <ul class="projects">
 
-        <!-- ───────── B33n ───────── -->
-        <li class="project reveal">
-          <div class="project-top">
-            <span class="app-icon"><img src="assets/b33n.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
-            <h3>B33n</h3>
-            <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
+        <!-- ───────── 01 · B33n ───────── -->
+        <li class="panel reveal">
+          <div class="panel-head">
+            <span class="panel-index">01</span>
+            <span class="panel-platform">iOS · Web</span>
           </div>
-          <p>Places your friends have actually been. Keep a list of where you've been and where you want to go, then ask friends for recommendations when you land somewhere new.</p>
-          <p class="actions">
-            <a class="btn" href="https://b33n.link">
-              b33n.link
-              <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
-            </a>
-            <a class="btn" href="https://apps.apple.com/gb/app/b33n/id6809171479">
-              App Store
-              <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
-            </a>
-          </p>
+          <div class="panel-body">
+            <span class="panel-art"><img src="assets/b33n.png" width="256" height="256" alt="" loading="lazy" decoding="async"></span>
+            <div class="panel-text">
+              <h3 class="panel-title">
+                B33n
+                <span class="panel-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg>
+                </span>
+              </h3>
+              <p>Good places, from people you know. Save where you've been, keep track of where you want to go, and ask friends for recommendations.</p>
+              <p class="actions">
+                <a class="btn" href="https://b33n.link">
+                  b33n.link
+                  <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
+                </a>
+                <a class="btn" href="https://apps.apple.com/gb/app/b33n/id6809171479">
+                  App Store
+                  <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
+                </a>
+              </p>
+            </div>
+          </div>
         </li>
 
-        <!-- ───────── Plug.fm ───────── -->
-        <li class="project reveal">
-          <div class="project-top">
-            <span class="app-icon"><img src="assets/plug.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
-            <h3>Plug.fm</h3>
-            <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
+        <!-- ───────── 02 · Plug.fm ───────── -->
+        <li class="panel reveal">
+          <div class="panel-head">
+            <span class="panel-index">02</span>
+            <span class="panel-platform">Web</span>
           </div>
-          <p>Call an artist early and get the credit when they climb. Your score follows how far they travel from the day you called it.</p>
-          <p class="actions">
-            <a class="btn" href="https://plug.fm">
-              plug.fm
-              <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
-            </a>
-          </p>
+          <div class="panel-body">
+            <span class="panel-art"><img src="assets/plug.png" width="256" height="256" alt="" loading="lazy" decoding="async"></span>
+            <div class="panel-text">
+              <h3 class="panel-title">
+                Plug.fm
+                <span class="panel-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg>
+                </span>
+              </h3>
+              <p>Find an artist early. Tell people. Say “I told you” later. Your score follows how far that artist climbs from the day you called them.</p>
+              <p class="actions">
+                <a class="btn" href="https://plug.fm">
+                  plug.fm
+                  <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
+                </a>
+              </p>
+            </div>
+          </div>
         </li>
 
-        <!-- ───────── Aunty Run ───────── -->
-        <li class="project reveal">
-          <div class="project-top">
-            <span class="app-icon"><img src="assets/auntyrun.png" width="112" height="112" alt="" loading="lazy" decoding="async"></span>
-            <h3>Aunty Run</h3>
-            <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
+        <!-- ───────── 03 · Aunty Run ───────── -->
+        <li class="panel reveal">
+          <div class="panel-head">
+            <span class="panel-index">03</span>
+            <span class="panel-platform">iOS · Web</span>
           </div>
-          <p>Mansion of Deliverance. Aunty Ngozi sprints through a haunted mansion in full kente and gele, rebuking ghosts with holy water and a few choice words. Plays in a browser, no install.</p>
-          <p class="actions">
-            <a class="btn" href="https://aunty-run.replit.app">
-              Play now
-              <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
-            </a>
-            <a class="btn" href="https://apps.apple.com/gb/app/auntyrun/id6780049104">
-              App Store
-              <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
-            </a>
-          </p>
+          <div class="panel-body">
+            <span class="panel-art"><img src="assets/auntyrun.png" width="256" height="256" alt="" loading="lazy" decoding="async"></span>
+            <div class="panel-text">
+              <h3 class="panel-title">
+                Aunty Run
+                <span class="panel-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg>
+                </span>
+              </h3>
+              <p>Aunty Ngozi runs through a haunted mansion with holy water and a few choice words. Jump the pews, duck the chandeliers, send the ghosts back.</p>
+              <p class="actions">
+                <a class="btn" href="https://aunty-run.replit.app">
+                  Play now
+                  <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
+                </a>
+                <a class="btn" href="https://apps.apple.com/gb/app/auntyrun/id6780049104">
+                  App Store
+                  <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 9 3M4.2 3H9v4.8"/></svg>
+                </a>
+              </p>
+            </div>
+          </div>
         </li>
 
       </ul>
@@ -129,38 +149,8 @@
 <script>
   document.documentElement.classList.add('js');
 
-  // The loader. Counts up, fills the bar, gets out of the way.
-  (function () {
-    var root = document.documentElement;
-    if (!root.classList.contains('preloading')) return;
-
-    var el = document.getElementById('preloader');
-    var fill = document.getElementById('plFill');
-    var count = document.getElementById('plCount');
-    var start = null;
-    var RUN = 850;
-
-    function frame(now) {
-      if (start === null) start = now;
-      var t = Math.min((now - start) / RUN, 1);
-      var eased = 1 - Math.pow(1 - t, 3);
-      var pct = Math.round(eased * 100);
-      fill.style.width = pct + '%';
-      count.textContent = 'Loading ' + pct + '%';
-      if (t < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        try { sessionStorage.setItem('omeoray-loaded', '1'); } catch (e) {}
-        el.classList.add('is-done');
-        root.classList.remove('preloading');
-        setTimeout(function () { el.remove(); }, 450);
-      }
-    }
-    requestAnimationFrame(frame);
-  })();
-
-  // Reveal each card as it arrives. With no JS the cards are simply visible.
-  var cards = document.querySelectorAll('.reveal');
+  // Reveal each panel as it arrives. With no JS they are simply visible.
+  var panels = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -170,12 +160,12 @@
         }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
-    cards.forEach(function (card, i) {
-      card.style.transitionDelay = (i * 70) + 'ms';
-      io.observe(card);
+    panels.forEach(function (panel, i) {
+      panel.style.transitionDelay = (i * 60) + 'ms';
+      io.observe(panel);
     });
   } else {
-    cards.forEach(function (card) { card.classList.add('is-in'); });
+    panels.forEach(function (panel) { panel.classList.add('is-in'); });
   }
 </script>
 
