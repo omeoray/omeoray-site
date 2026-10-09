@@ -24,7 +24,7 @@
       <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
       <span>omeoray</span>
     </a>
-    <nav><a href="contact/">Contact</a></nav>
+    <nav aria-label="Main navigation"><a href="#products">Products</a><a href="contact/">Contact</a></nav>
   </header>
 
   <main>
@@ -34,12 +34,18 @@
         <span class="meta">Independent software</span>
         <span class="meta">London</span>
       </div>
-      <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
+      <div class="orbit" aria-label="Explore our products">
+        <div class="orbit-ring" aria-hidden="true"></div>
+        <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
+        <a class="orbit-product orbit-one" href="#b33n" aria-label="Explore B33n"><img src="assets/b33n.png" width="56" height="56" alt=""><span>B33n</span></a>
+        <a class="orbit-product orbit-two" href="#plug" aria-label="Explore Plug.fm"><img src="assets/plug.png" width="56" height="56" alt=""><span>Plug.fm</span></a>
+        <a class="orbit-product orbit-three" href="#aunty" aria-label="Explore Aunty Run"><img src="assets/auntyrun.png" width="56" height="56" alt=""><span>Aunty Run</span></a>
+      </div>
       <h1>We build things.</h1>
       <p>Independent software from London. We make apps and games around music, places and&nbsp;play.</p>
     </section>
 
-    <section class="work" aria-labelledby="work-heading">
+    <section class="work" id="products" aria-labelledby="work-heading">
       <div class="work-head">
         <h2 id="work-heading">Products</h2>
         <span class="meta">Three</span>
@@ -48,7 +54,7 @@
       <ul class="projects">
 
         <!-- ───────── 01 · B33n ───────── -->
-        <li class="panel reveal">
+        <li class="panel reveal" id="b33n">
           <div class="panel-head">
             <span class="panel-index">01</span>
             <span class="panel-platform">iOS · Web</span>
@@ -78,7 +84,7 @@
         </li>
 
         <!-- ───────── 02 · Plug.fm ───────── -->
-        <li class="panel reveal">
+        <li class="panel reveal" id="plug">
           <div class="panel-head">
             <span class="panel-index">02</span>
             <span class="panel-platform">Web</span>
@@ -104,7 +110,7 @@
         </li>
 
         <!-- ───────── 03 · Aunty Run ───────── -->
-        <li class="panel reveal">
+        <li class="panel reveal" id="aunty">
           <div class="panel-head">
             <span class="panel-index">03</span>
             <span class="panel-platform">iOS · Web</span>
@@ -148,6 +154,34 @@
 
 <script>
   document.documentElement.classList.add('js');
+
+  var header = document.querySelector('.top');
+  var productNav = document.querySelector('nav a[href="#products"]');
+  var work = document.getElementById('products');
+  var scrollQueued = false;
+  function updateScroll() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    header.style.setProperty('--progress', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0);
+    header.classList.toggle('is-scrolled', window.scrollY > 20);
+    if (work.getBoundingClientRect().top <= 140) productNav.setAttribute('aria-current', 'location');
+    else productNav.removeAttribute('aria-current');
+    scrollQueued = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(updateScroll); }
+  }, { passive: true });
+  window.addEventListener('resize', updateScroll);
+  updateScroll();
+
+  var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.panel').forEach(function (panel) {
+    panel.addEventListener('pointermove', function (event) {
+      if (event.pointerType !== 'mouse' || motion.matches) return;
+      var box = panel.getBoundingClientRect();
+      panel.style.setProperty('--pointer-x', (event.clientX - box.left) + 'px');
+      panel.style.setProperty('--pointer-y', (event.clientY - box.top) + 'px');
+    });
+  });
 
   // Reveal each panel as it arrives. With no JS they are simply visible.
   var panels = document.querySelectorAll('.reveal');

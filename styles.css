@@ -549,3 +549,120 @@ footer a:focus-visible {
     transition: none;
   }
 }
+
+/* Floating navigation and a quiet reading-progress edge. */
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+.top {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+  margin-top: 20px;
+  padding: 14px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+.top::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+.top nav { display: flex; gap: 20px; }
+.top nav a[aria-current] { color: var(--accent); }
+.panel { scroll-margin-top: 110px; }
+
+/* Product satellites: real anchor links, usable without JavaScript. */
+.orbit {
+  position: relative;
+  width: 280px;
+  height: 240px;
+  margin: 32px auto 38px;
+  display: grid;
+  place-items: center;
+}
+.orbit-ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+}
+.orbit-ring::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px dashed var(--line);
+  border-radius: 50%;
+}
+.orbit-ring::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px solid transparent;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: bearing 24s linear infinite;
+}
+.hero .orbit .mark { width: 68px; height: 68px; margin: 0; }
+.orbit-product {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  transition: transform 200ms ease, color 200ms ease;
+}
+.orbit-product img {
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border: 3px solid var(--bg);
+}
+.orbit-one { top: 0; left: 40px; }
+.orbit-two { right: 0; top: 88px; }
+.orbit-three { bottom: -8px; left: 48px; }
+.orbit-product:hover, .orbit-product:focus-visible { transform: translateY(-5px); color: var(--accent); }
+@keyframes bearing { to { transform: rotate(360deg); } }
+
+/* Light follows the pointer; keyboard focus gets the same illuminated surface. */
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(240px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), var(--accent-wash), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+.panel:hover::after, .panel:focus-within::after { opacity: 1; }
+.panel-art { transition: transform 220ms ease, box-shadow 220ms ease; }
+.panel:hover .panel-art, .panel:focus-within .panel-art {
+  transform: translateY(-4px) rotate(-3deg);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 34rem) {
+  .top { padding: 12px 16px; gap: 10px; }
+  .top nav { gap: 14px; }
+  .top nav a { font-size: 0.85rem; }
+  .brand { gap: 6px; font-size: 0.95rem; }
+  .hero { padding-top: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .orbit-ring::after { animation: none; }
+  .orbit-product:hover, .orbit-product:focus-visible,
+  .panel:hover .panel-art, .panel:focus-within .panel-art { transform: none; }
+}
