@@ -1,0 +1,26 @@
+# Omeoray
+
+> Omeoray Ltd is an independent software company in London. We build things: apps and games around music, places and play. Our products are B33n (place recommendations from people you know, iPhone and web), Plug.fm (spot music artists early, web) and Aunty Run (an arcade runner game, iPhone and web). Contact: hello@omeoray.com.
+
+Every page on this site is plain, static HTML with schema.org JSON-LD. Blog posts also have a Markdown twin at `index.md` next to the page, and the whole site as one Markdown file is at https://omeoray.com/llms-full.txt.
+
+## Products
+
+- [B33n](https://b33n.link): Good places, from people you know. Save where you've been, keep a Want to Go list, ask friends for recommendations with one link they can answer in any browser, and see what people you follow recommend in the city you're in. Free on the [App Store](https://apps.apple.com/gb/app/b33n/id6809171479). B33n also has an MCP connector for AI assistants at `https://b33n.link/mcp` (OAuth 2.1); assistants get the user's own places and, if allowed, aggregate signals from people they follow, never names or notes.
+- [Plug.fm](https://plug.fm): Find an artist early, tell people, and your score follows how far that artist climbs from the day you called them. Web.
+- [Aunty Run](https://aunty-run.replit.app): Aunty Ngozi runs through a haunted mansion with holy water and a few choice words. On the [App Store](https://apps.apple.com/gb/app/auntyrun/id6780049104) and the web.
+
+## Blog
+
+- [B33n: the best way to get place recommendations from friends](https://omeoray.com/blog/b33n-place-recommendations-from-friends/index.md): what B33n does (rec request links, city-first view, 38 vibes instead of reviews, share-sheet and screenshot import, gatekeep, AI assistant connector), a comparison with group chats, maps-app saved lists and review sites, release history, and FAQs. Published 17 October 2026.
+- [All posts](https://omeoray.com/blog/) and the [Atom feed](https://omeoray.com/blog/feed.xml)
+
+## Company
+
+- [Contact](https://omeoray.com/contact/): hello@omeoray.com, one address that reaches a person.
+- Omeoray Ltd, registered in England and Wales, company no. 17489103. Registered office: 66 Paul Street, London EC2A 4NA.
+
+## Optional
+
+- [Sitemap](https://omeoray.com/sitemap.xml)
+- [Everything in one file](https://omeoray.com/llms-full.txt)

@@ -666,3 +666,403 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
   .orbit-product:hover, .orbit-product:focus-visible,
   .panel:hover .panel-art, .panel:focus-within .panel-art { transform: none; }
 }
+
+/* ---------- blog ---------- */
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 20;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+.top nav a[aria-current="page"] { color: var(--accent); }
+
+.blog-head,
+.post-head {
+  padding: 92px 0 0;
+}
+
+.blog-head h1,
+.post-head h1 {
+  margin: 34px 0 18px;
+  font-size: clamp(2.1rem, 7vw, 3.1rem);
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.blog-head > p,
+.dek {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+}
+
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 22px 0 0;
+}
+
+/* the index: one row per post, the same ruled rhythm as the products list */
+.posts {
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.post-card {
+  position: relative;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.post-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  margin-bottom: 20px;
+  transition: transform 220ms ease;
+}
+
+.post-card:hover img,
+.post-card:focus-within img {
+  transform: translateY(-3px);
+}
+
+.post-card h2 {
+  margin: 8px 0 8px;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  transition: color 140ms ease;
+}
+
+.post-card:hover h2,
+.post-card:focus-within h2 {
+  color: var(--accent);
+}
+
+.post-card p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+/* ---------- a post ---------- */
+
+.post-figure {
+  margin: 44px 0;
+}
+
+.post-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+.post-figure figcaption {
+  margin-top: 10px;
+  color: var(--ink-faint);
+  font-size: 0.86rem;
+}
+
+.post-figure.wide {
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.facts {
+  position: relative;
+  margin: 0 0 48px;
+  padding: 24px 24px 22px 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.facts::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: -1px;
+  width: 2px;
+  background: var(--accent);
+}
+
+.facts h2 {
+  margin: 0 0 12px !important;
+}
+
+.facts ul {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.facts li {
+  margin: 0 0 6px;
+  color: var(--ink-soft);
+}
+
+.facts li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose {
+  max-width: 40rem;
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-soft);
+}
+
+.prose p {
+  margin: 0 0 20px;
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 140ms ease;
+}
+
+.prose a:hover,
+.prose a:focus-visible {
+  color: var(--accent);
+}
+
+.prose h2 {
+  margin: 64px 0 18px;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.prose h3 {
+  margin: 40px 0 10px;
+  font-size: 1.18rem;
+  letter-spacing: -0.018em;
+  font-weight: 600;
+}
+
+.prose ul {
+  margin: 0 0 22px;
+  padding-left: 1.2em;
+}
+
+.prose li {
+  margin: 0 0 8px;
+}
+
+.prose code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--accent-wash);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--ink) !important;
+}
+
+/* vibes, drawn the way the app draws them */
+.prose .vibes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.prose .vibes li {
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--vibe) 16%, var(--panel));
+  border: 1px solid color-mix(in srgb, var(--vibe) 34%, transparent);
+  transition: transform 160ms ease;
+}
+
+.prose .vibes li:hover {
+  transform: translateY(-2px) rotate(-2deg);
+}
+
+/* the comparison: scrolls inside itself on a phone, never the page */
+.table-wrap {
+  margin: 0 0 14px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.compare {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.compare caption {
+  caption-side: bottom;
+  padding: 12px 16px;
+  text-align: left;
+  color: var(--ink-faint);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--line);
+}
+
+.compare th,
+.compare td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.compare thead th {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.compare tbody th {
+  color: var(--ink);
+  font-weight: 600;
+  width: 22%;
+}
+
+.compare tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.compare .ours {
+  background: var(--accent-wash);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.compare thead .ours {
+  color: var(--accent);
+}
+
+.faq h3 {
+  margin-top: 28px;
+}
+
+.cta {
+  margin: 30px 0 0;
+}
+
+.post-foot {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.post-foot a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.post-foot a:hover,
+.post-foot a:focus-visible {
+  color: var(--accent);
+}
+
+@media (max-width: 34rem) {
+  .blog-head,
+  .post-head {
+    padding-top: 56px;
+  }
+
+  .post-figure.wide {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  .post-figure.wide img {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .post-figure.wide figcaption {
+    padding: 0 16px;
+  }
+
+  /* diagrams stay legible on a phone: they scroll sideways inside themselves */
+  .post-figure.diagram .scroller {
+    overflow-x: auto;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-figure.diagram .scroller img {
+    width: 780px;
+    max-width: none;
+    border: 0;
+  }
+
+  .facts {
+    padding: 20px 18px 18px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-card:hover img,
+  .post-card:focus-within img,
+  .prose .vibes li:hover {
+    transform: none;
+  }
+}
