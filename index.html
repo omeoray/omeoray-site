@@ -1,19 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Omeoray</title>
 <meta name="description" content="Independent software from London. We make apps and games around music, places and play.">
+<link rel="canonical" href="https://omeoray.com/">
+<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Omeoray blog">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:title" content="Omeoray">
 <meta property="og:description" content="Independent software from London. We make apps and games around music, places and play.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://omeoray.com/">
+<meta property="og:site_name" content="Omeoray">
+<meta property="og:image" content="https://omeoray.com/assets/og-omeoray.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://omeoray.com/#organization",
+      "name": "Omeoray",
+      "legalName": "Omeoray Ltd",
+      "url": "https://omeoray.com/",
+      "logo": "https://omeoray.com/assets/omeoray-mark.png",
+      "email": "hello@omeoray.com",
+      "slogan": "We build things.",
+      "description": "Independent software company in London making apps and games around music, places and play.",
+      "foundingLocation": { "@type": "Place", "name": "London, United Kingdom" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "66 Paul Street",
+        "addressLocality": "London",
+        "postalCode": "EC2A 4NA",
+        "addressCountry": "GB"
+      },
+      "identifier": { "@type": "PropertyValue", "propertyID": "UK Companies House number", "value": "17489103" },
+      "contactPoint": { "@type": "ContactPoint", "email": "hello@omeoray.com", "contactType": "customer support" },
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@id": "https://omeoray.com/#b33n" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://omeoray.com/#plug" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://omeoray.com/#aunty" } }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://omeoray.com/#website",
+      "name": "Omeoray",
+      "url": "https://omeoray.com/",
+      "inLanguage": "en-GB",
+      "publisher": { "@id": "https://omeoray.com/#organization" }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://omeoray.com/#b33n",
+      "name": "B33n",
+      "description": "Good places, from people you know. Save where you've been, keep track of where you want to go, and ask friends for recommendations.",
+      "operatingSystem": "iOS",
+      "applicationCategory": "TravelApplication",
+      "url": "https://b33n.link",
+      "downloadUrl": "https://apps.apple.com/gb/app/b33n/id6809171479",
+      "image": "https://omeoray.com/assets/b33n.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+      "publisher": { "@id": "https://omeoray.com/#organization" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://omeoray.com/#plug",
+      "name": "Plug.fm",
+      "description": "Find an artist early. Tell people. Say \u201cI told you\u201d later. Your score follows how far that artist climbs from the day you called them.",
+      "applicationCategory": "MusicApplication",
+      "operatingSystem": "Web",
+      "url": "https://plug.fm",
+      "image": "https://omeoray.com/assets/plug.png",
+      "publisher": { "@id": "https://omeoray.com/#organization" }
+    },
+    {
+      "@type": "VideoGame",
+      "@id": "https://omeoray.com/#aunty",
+      "name": "Aunty Run",
+      "description": "Aunty Ngozi runs through a haunted mansion with holy water and a few choice words. Jump the pews, duck the chandeliers, send the ghosts back.",
+      "gamePlatform": ["iOS", "Web browser"],
+      "url": "https://aunty-run.replit.app",
+      "sameAs": "https://apps.apple.com/gb/app/auntyrun/id6780049104",
+      "image": "https://omeoray.com/assets/auntyrun.png",
+      "publisher": { "@id": "https://omeoray.com/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -24,7 +108,7 @@
       <img class="mark" src="assets/omeoray-mark.png" width="512" height="512" alt="" decoding="async">
       <span>omeoray</span>
     </a>
-    <nav aria-label="Main navigation"><a href="#products">Products</a><a href="contact/">Contact</a></nav>
+    <nav aria-label="Main navigation"><a href="#products">Products</a><a href="blog/">Blog</a><a href="contact/">Contact</a></nav>
   </header>
 
   <main>
@@ -142,10 +226,28 @@
       </ul>
     </section>
 
+    <section class="work" id="journal" aria-labelledby="journal-heading">
+      <div class="work-head">
+        <h2 id="journal-heading">From the blog</h2>
+        <a class="meta" href="blog/" style="text-decoration:none">All posts</a>
+      </div>
+      <ul class="posts" style="margin-top:0;border-top:0">
+        <li class="post-card">
+          <article>
+            <a href="blog/b33n-place-recommendations-from-friends/">
+              <time class="meta" datetime="2026-10-17">17 October 2026 · B33n</time>
+              <h2>B33n: the best way to get place recommendations from friends</h2>
+            </a>
+            <p>Group chats lose them, saved pins forget who sent them, and review sites are full of strangers. Here is how B33n is different.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
   </main>
 
   <footer>
-    <p><a href="contact/">hello@omeoray.com</a></p>
+    <p><a href="contact/">hello@omeoray.com</a> · <a href="blog/">Blog</a> · <a href="llms.txt">llms.txt</a></p>
     <p>Omeoray Ltd · Registered in England and Wales, company no. 17489103</p>
     <p>Registered office: 66 Paul Street, London EC2A 4NA</p>
   </footer>

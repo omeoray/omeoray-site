@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+  <title id="t">A city map dotted with places your friends recommend</title>
+  <desc id="d">An illustrated city map with coloured pins. Each pin belongs to a friend and carries a vibe such as Date Night, Hidden Gem or Cheap Eats. Beside it, a phone shows the B33n city view: twelve places in Lisbon from five people you follow.</desc>
+  <defs>
+    <path id="pin" d="M0 0C-7-17-30-33-30-58A30 30 0 1 1 30-58C30-33 7-17 0 0Z"/>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#3B2718" flood-opacity="0.16"/>
+    </filter>
+    <filter id="lift" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#3B2718" flood-opacity="0.18"/>
+    </filter>
+    <clipPath id="screen"><rect x="1094" y="138" width="372" height="664" rx="40"/></clipPath>
+  </defs>
+
+  <style>
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .chip { font-size: 24px; font-weight: 600; fill: #3B2718; }
+    .ini { font-size: 22px; font-weight: 700; fill: #F5F1E6; text-anchor: middle; }
+  </style>
+
+  <!-- ground -->
+  <rect width="1600" height="900" fill="#EDE7DB"/>
+
+  <!-- city blocks -->
+  <g fill="#E4DDCE">
+    <rect x="60" y="70" width="230" height="150" rx="14"/>
+    <rect x="330" y="70" width="300" height="150" rx="14"/>
+    <rect x="670" y="70" width="250" height="150" rx="14"/>
+    <rect x="60" y="260" width="180" height="210" rx="14"/>
+    <rect x="280" y="260" width="250" height="120" rx="14"/>
+    <rect x="570" y="260" width="350" height="120" rx="14"/>
+    <rect x="60" y="740" width="320" height="120" rx="14"/>
+    <rect x="420" y="760" width="260" height="100" rx="14"/>
+    <rect x="720" y="740" width="250" height="120" rx="14"/>
+  </g>
+  <!-- park -->
+  <rect x="280" y="420" width="250" height="110" rx="18" fill="#D9E0CB"/>
+  <circle cx="330" cy="470" r="18" fill="#C9D4B6"/>
+  <circle cx="380" cy="490" r="14" fill="#C9D4B6"/>
+  <circle cx="470" cy="460" r="20" fill="#C9D4B6"/>
+
+  <!-- streets -->
+  <g fill="none" stroke="#F6F2EA" stroke-linecap="round">
+    <path d="M0 240H1040" stroke-width="22"/>
+    <path d="M260 0V720" stroke-width="18"/>
+    <path d="M650 0V720" stroke-width="18"/>
+    <path d="M0 400C300 390 600 420 1040 380" stroke-width="14"/>
+    <path d="M550 260 950 700" stroke-width="12"/>
+  </g>
+
+  <!-- river -->
+  <path d="M-20 640C220 560 420 700 640 640S960 560 1080 610" fill="none" stroke="#CBD9D9" stroke-width="72" stroke-linecap="round"/>
+  <path d="M-20 640C220 560 420 700 640 640S960 560 1080 610" fill="none" stroke="#D9E4E3" stroke-width="40" stroke-linecap="round"/>
+
+  <!-- the "you are here" ring, the Omeoray bearing -->
+  <g transform="translate(600 470)">
+    <circle r="92" fill="#1B3CFF" fill-opacity="0.06"/>
+    <circle r="92" fill="none" stroke="#1B3CFF" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="6 9"/>
+    <circle r="14" fill="#1B3CFF"/>
+    <circle r="14" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+  </g>
+
+  <!-- pin: Ada, Date Night -->
+  <g transform="translate(170 205)" filter="url(#soft)">
+    <use href="#pin" fill="#C1694F"/>
+    <circle cy="-58" r="11" fill="#F5F1E6"/>
+  </g>
+  <g transform="translate(110 105)" filter="url(#lift)">
+    <rect x="0" y="-40" width="210" height="52" rx="26" fill="#FFFDF8"/>
+    <circle cx="26" cy="-14" r="20" fill="#C1694F"/>
+    <text class="ini" x="26" y="-6" style="font-size:18px">A</text>
+    <text class="chip" x="56" y="-5">Date Night</text>
+  </g>
+
+  <!-- pin: Kemi, Hidden Gem -->
+  <g transform="translate(470 330)" filter="url(#soft)">
+    <use href="#pin" fill="#D4915E"/>
+    <circle cy="-58" r="11" fill="#F5F1E6"/>
+  </g>
+  <g transform="translate(330 205)" filter="url(#lift)">
+    <rect x="0" y="-40" width="212" height="52" rx="26" fill="#FFFDF8"/>
+    <circle cx="26" cy="-14" r="20" fill="#D4915E"/>
+    <text class="ini" x="26" y="-6" style="font-size:18px">K</text>
+    <text class="chip" x="56" y="-5">Hidden Gem</text>
+  </g>
+
+  <!-- pin: Sam, Natural Wine -->
+  <g transform="translate(860 340)" filter="url(#soft)">
+    <use href="#pin" fill="#8E4A5B"/>
+    <circle cy="-58" r="11" fill="#F5F1E6"/>
+  </g>
+  <g transform="translate(720 200)" filter="url(#lift)">
+    <rect x="0" y="-40" width="234" height="52" rx="26" fill="#FFFDF8"/>
+    <circle cx="26" cy="-14" r="20" fill="#8E4A5B"/>
+    <text class="ini" x="26" y="-6" style="font-size:18px">S</text>
+    <text class="chip" x="56" y="-5">Natural Wine</text>
+  </g>
+
+  <!-- pin: Jo, Cheap Eats -->
+  <g transform="translate(200 560)" filter="url(#soft)">
+    <use href="#pin" fill="#5B8A72"/>
+    <circle cy="-58" r="11" fill="#F5F1E6"/>
+  </g>
+  <g transform="translate(110 628)" filter="url(#lift)">
+    <rect x="0" y="-40" width="210" height="52" rx="26" fill="#FFFDF8"/>
+    <circle cx="26" cy="-14" r="20" fill="#5B8A72"/>
+    <text class="ini" x="26" y="-6" style="font-size:18px">J</text>
+    <text class="chip" x="56" y="-5">Cheap Eats</text>
+  </g>
+
+  <!-- pin: Lou, Live Music -->
+  <g transform="translate(880 560)" filter="url(#soft)">
+    <use href="#pin" fill="#8B6BAE"/>
+    <circle cy="-58" r="11" fill="#F5F1E6"/>
+  </g>
+  <g transform="translate(776 628)" filter="url(#lift)">
+    <rect x="0" y="-40" width="208" height="52" rx="26" fill="#FFFDF8"/>
+    <circle cx="26" cy="-14" r="20" fill="#8B6BAE"/>
+    <text class="ini" x="26" y="-6" style="font-size:18px">L</text>
+    <text class="chip" x="56" y="-5">Live Music</text>
+  </g>
+
+  <!-- the phone -->
+  <g filter="url(#soft)">
+    <rect x="1078" y="122" width="404" height="696" rx="56" fill="#3B2718"/>
+  </g>
+  <rect x="1094" y="138" width="372" height="664" rx="40" fill="#F5F1E6"/>
+  <g clip-path="url(#screen)">
+    <rect x="1094" y="138" width="372" height="190" fill="#5C3D2E"/>
+    <rect x="1225" y="152" width="110" height="28" rx="14" fill="#3B2718"/>
+    <text x="1122" y="236" style="font-size:20px;font-weight:600;letter-spacing:.12em;fill:#CBBBAC">YOU'RE IN</text>
+    <text x="1122" y="284" style="font-size:44px;font-weight:700;fill:#F5F1E6;letter-spacing:-.02em">Lisbon</text>
+    <text x="1122" y="314" style="font-size:19px;fill:#CBBBAC">12 places · 5 people you follow</text>
+
+    <!-- category chips -->
+    <rect x="1118" y="346" width="96" height="38" rx="19" fill="#5C3D2E"/>
+    <text x="1166" y="371" text-anchor="middle" style="font-size:17px;font-weight:600;fill:#F5F1E6">All</text>
+    <rect x="1224" y="346" width="150" height="38" rx="19" fill="none" stroke="#CEC9BA" stroke-width="2"/>
+    <text x="1299" y="371" text-anchor="middle" style="font-size:17px;font-weight:600;fill:#7A6B5D">Food &amp; Drink</text>
+    <rect x="1384" y="346" width="110" height="38" rx="19" fill="none" stroke="#CEC9BA" stroke-width="2"/>
+    <text x="1406" y="371" style="font-size:17px;font-weight:600;fill:#7A6B5D">Culture</text>
+
+    <!-- rows -->
+    <g transform="translate(1118 410)">
+      <rect width="324" height="104" rx="18" fill="#FFFDF8"/>
+      <rect x="14" y="14" width="76" height="76" rx="14" fill="#C1694F"/>
+      <path d="M38 64 52 36 66 64Z" fill="#F5F1E6" opacity=".55"/>
+      <text x="106" y="44" style="font-size:21px;font-weight:700;fill:#3B2718">Tasca do Bairro</text>
+      <text x="106" y="72" style="font-size:17px;fill:#7A6B5D">Ada, Jo +1 · 0.4 km</text>
+    </g>
+    <g transform="translate(1118 526)">
+      <rect width="324" height="104" rx="18" fill="#FFFDF8"/>
+      <rect x="14" y="14" width="76" height="76" rx="14" fill="#8E4A5B"/>
+      <circle cx="52" cy="52" r="16" fill="#F5F1E6" opacity=".55"/>
+      <text x="106" y="44" style="font-size:21px;font-weight:700;fill:#3B2718">Adega Nova</text>
+      <text x="106" y="72" style="font-size:17px;fill:#7A6B5D">Sam · Natural Wine</text>
+    </g>
+    <g transform="translate(1118 642)">
+      <rect width="324" height="104" rx="18" fill="#FFFDF8"/>
+      <rect x="14" y="14" width="76" height="76" rx="14" fill="#5A8FAD"/>
+      <path d="M30 70h44M38 70V44h28v26" stroke="#F5F1E6" stroke-width="5" fill="none" opacity=".6"/>
+      <text x="106" y="44" style="font-size:21px;font-weight:700;fill:#3B2718">Miradouro 7</text>
+      <text x="106" y="72" style="font-size:17px;fill:#7A6B5D">Kemi · Views</text>
+    </g>
+  </g>
+</svg>
